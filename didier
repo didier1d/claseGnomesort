@@ -1,0 +1,46 @@
+import java.util.Arrays;
+
+public class GnomeSort {
+
+    public static void gnomeSort(Object[] arr) {
+        int index = 0;
+        while (index < arr.length) {
+            if (index == 0) {
+                index++;
+            }
+            if (index < arr.length && compare(arr[index], arr[index - 1]) >= 0) {
+                index++;
+            } else {
+                // Swap elements
+                if (index < arr.length) {
+                    Object temp = arr[index];
+                    arr[index] = arr[index - 1];
+                    arr[index - 1] = temp;
+                }
+                index--;
+            }
+        }
+    }
+
+    // Método de comparación
+    private static int compare(Object a, Object b) {
+        return String.valueOf(a).compareTo(String.valueOf(b));
+    }
+
+    public static void main(String[] args) {
+        // Ejemplos de uso
+        Object[][] examples = {
+            {3, "manzana", 1, "banana", 2, "pera"},
+            {5, 1, 4, 2, 3},
+            {"d", "b", "c", "a"},
+            {2.5, 1.2, "pera", "manzana", 3.3},
+            {"apple", 42, "banana", 3.14, 2}
+        };
+
+        // Procesar cada ejemplo
+        for (Object[] data : examples) {
+            gnomeSort(data);
+            System.out.println(Arrays.toString(data));
+        }
+    }
+}
